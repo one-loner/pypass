@@ -7,4 +7,6 @@ echo "Installing requirements"
 apt-get install -y python3 pip
 echo "Installing pypass."
 cp pypass.py /opt/pypass.py
+cp pypass.sh /bin/pypass
+chmod +x /bin/pypass
 echo "Done."
