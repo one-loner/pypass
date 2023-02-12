@@ -93,9 +93,10 @@ while True:
        print(ls)
 
    print("==================================================")
-   print("Enter: number of note to read it,  a to add note, e to edit note, d to delete note and q to exit")
+   print("Enter: number of note to read it,  a to add note, e to edit note, r to rename, d to delete note and q to exit")
    print('')
    cmd = input('>>>  ')
+   cmd=cmd.lower()
    if cmd.isdigit() is True:
       try:
           filepath=path+'/'+content[int(cmd)]
@@ -133,6 +134,22 @@ while True:
             cleartmp()
          except Exception:
             print('Wrong password or note is corrupt.')
+      if cmd=='r':
+         print ("Enter number of note:\n")
+         n=input(">>> ")
+         print ("Enter new name of the note:\n")
+         newname=input(">>> ")
+         newname=newname.replace('/','')
+         
+         try:
+             filepath=path+'/'+content[int(n)]+' '
+             filepathnew=path+'/'+newname
+             cmd='mv '+filepath+filepathnew
+             os.system(cmd)
+             
+         except Exception:
+             input('Wrong number. Press enter to continue.')
+             continue
 
       if cmd=='d':
          dtd=input('Enter number of note to delete: ')
